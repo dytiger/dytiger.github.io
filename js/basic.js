@@ -11,7 +11,13 @@ $(function () {
 
     $('html').on('keydown', function (event) {
         var keyCode = event.keyCode;
-        if (keyCode == 9 || keyCode == 32 || keyCode == 13) {
+        if (keyCode == 9 || keyCode == 32 || keyCode == 13 || keyCode == 116 || keyCode == 112 || keyCode == 8) {
+            event.preventDefault();
+        }
+        if (event.altKey && keyCode == 37 || keyCode == 39) {
+            event.preventDefault();
+        }
+        if (event.ctrlKey || (event.shiftKey) && (keyCode == 121)) {
             event.preventDefault();
         }
         var k = '#k' + keyCode;
