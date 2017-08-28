@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+.key-row {
+    text-align: center;
+}
+.key {
+    display: inline-block;
+    border: #999 solid 1px;
+    border-radius: 4px;
+    margin: 2px;
+    padding: 5px;
+    font-size: 1em;
+    font-family: Calibri;
+    text-align: left;
+    height: 3.5em;
+}
+
+.normal-key {
+    width: 3.5em;
+}
+.larger-key {
+    width: 4.75em;
+}
+.large-key {
+    width: 6em;
+}
+.x-large-key {
+    width: 7.5em;
+}
+.xx-large-key {
+    width: 8.75em;
+}
+.space-key {
+    width: 30.2em;
+}
+.basic-key{
+    background-color: #eee;
+}
+.current-key {
+    background-color: #ff9999;
+}
+.kd{
+    background: #999;
+    color:#eee;
+}
