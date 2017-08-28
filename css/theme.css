@@ -1,6 +1,4 @@
-body,h1,h2,h3{
-    font-family: 微软雅黑,楷体,宋体;
-}
+@charset "UTF-8";
 
 .bg-blue{
     background: #39f;
