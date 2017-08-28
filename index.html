@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>英文打字指法练习</title>
+    <meta name="keywords" content="在线英文打字练习,提高打字速度,英文打字,打字指法,盲打训练,指法练习,英文打字指法,英文打字指法训练,打字指法练习">
+    <meta name="description" content="在线英文打字练习,提高英文打字速度,掌握盲打技巧,训练打字准确率,提高速度,掌握打字指法。">
     <link rel="stylesheet" href="css/bootstrap.css"/>
     <link rel="stylesheet" href="css/uikit.css"/>
     <link rel="stylesheet" href="css/theme.css"/>
@@ -339,7 +341,7 @@
                 <input class="uk-radio" name="fingure" value="4" type="radio"/>
             </label></li>
             <li><label>
-                大拇指
+                拇指
                 <input class="uk-radio" name="fingure" value="0" type="radio"/>
             </label></li>
         </ul>
@@ -366,33 +368,6 @@
 <script src="js/bootstrap.js"></script>
 <script src="js/uikit.js"></script>
 <script src="js/uikit-icons.js"></script>
-<script>
-    $(function(){
-        $('[name="hand"]').add('[name="fingure"]').on('change',function(){
-            var handValue = $('[name="hand"]:checked').val();
-            var fingureValue = $('[name="fingure"]:checked').val();
-            if(handValue&&fingureValue){
-                var classValue = '.' + handValue + fingureValue;
-                $('.key').removeClass('current-key');
-                $(classValue).addClass('current-key');
-            }
-        });
-
-        $('html').on('keydown',function(event){
-            var k = '#k'+event.keyCode;
-            $(k).addClass("kd");
-        });
-        $('html').on('keyup',function(event){
-            var k = '#k'+event.keyCode;
-            $(k).removeClass("kd");
-        });
-
-        $('#reset').on('click',function(){
-            $('[name="hand"]:checked').prop('checked',false);
-            $('[name="fingure"]:checked').prop('checked',false);
-            $('.key').removeClass('current-key');
-        });
-    });
-</script>
+<script src="js/basic.js"></script>
 </body>
 </html>
