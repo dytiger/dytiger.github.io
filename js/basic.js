@@ -11,13 +11,16 @@ $(function () {
 
     $('html').on('keydown', function (event) {
         var keyCode = event.keyCode;
-        if (keyCode == 9 || keyCode == 32 || keyCode == 13 || keyCode == 116 || keyCode == 112 || keyCode == 8) {
+        if (keyCode == 9 || keyCode == 32 || keyCode == 13 || keyCode == 116 || keyCode == 112 || keyCode == 8 || (keyCode==222&&keyCode==13)) {
             event.preventDefault();
         }
         if (event.altKey && keyCode == 37 || keyCode == 39) {
             event.preventDefault();
         }
         if (event.ctrlKey || (event.shiftKey) && (keyCode == 121)) {
+            event.preventDefault();
+        }
+        if ((event.shiftKey) && (keyCode == 191)) {
             event.preventDefault();
         }
         var k = '#k' + keyCode;
