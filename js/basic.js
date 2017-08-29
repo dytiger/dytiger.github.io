@@ -11,7 +11,7 @@ $(function () {
 
     $('html').on('keydown', function (event) {
         var keyCode = event.keyCode;
-        if (keyCode == 9 || keyCode == 32 || keyCode == 13 || keyCode == 116 || keyCode == 112 || keyCode == 8 || (keyCode==222&&keyCode==13)) {
+        if (keyCode == 9 || keyCode == 32 || keyCode == 13 || keyCode == 116 || keyCode == 112 || keyCode == 8) {
             event.preventDefault();
         }
         if (event.altKey && keyCode == 37 || keyCode == 39) {
@@ -19,6 +19,10 @@ $(function () {
         }
         if (event.ctrlKey || (event.shiftKey) && (keyCode == 121)) {
             event.preventDefault();
+        }
+        if(keyCode==222){
+            event.preventDefault();
+            $('#222').addClass("kd");
         }
         if ((event.shiftKey) && (keyCode == 191)) {
             event.preventDefault();
