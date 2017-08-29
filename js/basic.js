@@ -1,3 +1,4 @@
+var exKeys = [8,9,13,32,37,39,112,116,121,222,191];
 $(function () {
     $('[name="hand"]').add('[name="fingure"]').on('change', function () {
         var handValue = $('[name="hand"]:checked').val();
@@ -11,7 +12,6 @@ $(function () {
 
     $('html').on('keydown', function (event) {
         var keyCode = event.keyCode;
-        var exKeys = [8,9,13,32,37,39,112,116,121,222,191];
         if(exKeys.indexOf(keyCode)!=-1){
             event.preventDefault();
         }
