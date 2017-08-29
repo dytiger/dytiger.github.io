@@ -36,8 +36,8 @@
 .basic-key{
     background-color: #eee;
 }
-.current-key {
-    background-color: #ff9999;
+.highlight-key {
+    background-color: #f99;
 }
 .kd{
     background: #999;
