@@ -24,8 +24,9 @@ $(function () {
             event.preventDefault();
             $('#222').addClass("kd");
         }
-        if ((event.shiftKey) && (keyCode == 191)) {
+        if (keyCode == 191) {
             event.preventDefault();
+            $('#191').addClass("kd");
         }
         var k = '#k' + keyCode;
         $(k).addClass("kd");
