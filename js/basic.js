@@ -11,23 +11,32 @@ $(function () {
 
     $('html').on('keydown', function (event) {
         var keyCode = event.keyCode;
-        if (keyCode == 9 || keyCode == 32 || keyCode == 13 || keyCode == 116 || keyCode == 112 || keyCode == 8) {
+        var exKeys = [8,9,13,32,37,39,112,116,121];
+        var exKeysButShow = [222,191];
+        if(exKeys.indexOf(keyCode)!=-1){
             event.preventDefault();
         }
-        if (event.altKey && keyCode == 37 || keyCode == 39) {
+        if(exKeysButShow.indexOf(keyCode)!=-1){
             event.preventDefault();
+            //$('#' + keyCode).addClass("kd");
         }
-        if (event.ctrlKey || (event.shiftKey) && (keyCode == 121)) {
-            event.preventDefault();
-        }
-        if(keyCode==222){
-            event.preventDefault();
-            $('#222').addClass("kd");
-        }
-        if (keyCode == 191) {
-            event.preventDefault();
-            $('#191').addClass("kd");
-        }
+        // if (keyCode == 9 || keyCode == 32 || keyCode == 13 || keyCode == 116 || keyCode == 112 || keyCode == 8) {
+        //     event.preventDefault();
+        // }
+        // if (event.altKey && keyCode == 37 || keyCode == 39) {
+        //     event.preventDefault();
+        // }
+        // if (event.ctrlKey || (event.shiftKey) && (keyCode == 121)) {
+        //     event.preventDefault();
+        // }
+        // if(keyCode==222){
+        //     event.preventDefault();
+        //     $('#222').addClass("kd");
+        // }
+        // if (keyCode == 191) {
+        //     event.preventDefault();
+        //     $('#191').addClass("kd");
+        // }
         var k = '#k' + keyCode;
         $(k).addClass("kd");
     });
