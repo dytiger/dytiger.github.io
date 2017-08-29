@@ -12,7 +12,6 @@ $(function () {
 
     $('html').on('keydown', function (event) {
         var keyCode = event.keyCode;
-        console.log(keyCode);
         if(exKeys.indexOf(keyCode)!=-1){
             event.preventDefault();
         }
