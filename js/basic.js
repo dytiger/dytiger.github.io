@@ -11,12 +11,8 @@ $(function () {
 
     $('html').on('keydown', function (event) {
         var keyCode = event.keyCode;
-        var exKeys = [8,9,13,32,37,39,112,116,121];
-        var exKeysButShow = [222,191];
+        var exKeys = [8,9,13,32,37,39,112,116,121,222,191];
         if(exKeys.indexOf(keyCode)!=-1){
-            event.preventDefault();
-        }
-        if(exKeysButShow.indexOf(keyCode)!=-1){
             event.preventDefault();
         }
         var k = '#k' + keyCode;
