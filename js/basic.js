@@ -1,4 +1,4 @@
-var exKeys = [8, 9, 13, 18, 32, 37, 39, 112, 114, 116, 121, 122, 222, 191];
+var exKeys = [8, 9, 13, 18, 32, 37, 39, 112, 114, 116 ,121, 122, 222, 191];
 $(function () {
     $('[name="hand"]').add('[name="fingure"]').on('change', function () {
         var handValue = $('[name="hand"]:checked').val();
@@ -19,6 +19,13 @@ $(function () {
 
 var processKeyClass = function(event){
     var keyCode = event.keyCode;
+    if(keyCode==173){
+        keyCode = 189;
+    }
+    if(keyCode==61){
+        keyCode = 187;
+    }
+    console.log(keyCode);
     if (exKeys.indexOf(keyCode) != -1) {
         event.preventDefault();
     }
