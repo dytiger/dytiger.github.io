@@ -25,7 +25,9 @@ var processKeyClass = function(event){
     if(keyCode==61){
         keyCode = 187;
     }
-    console.log(keyCode);
+    if(keyCode==59){
+        keyCode = 186;
+    }
     if (exKeys.indexOf(keyCode) != -1) {
         event.preventDefault();
     }
