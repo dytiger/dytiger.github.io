@@ -17,44 +17,32 @@ $(function () {
     });
 });
 
-var getLocation = function(){
+var processKeyClass = function(event){
+    var keyCode = event.keyCode;
+    if (exKeys.indexOf(keyCode) != -1) {
+        event.preventDefault();
+    }
+    var k = '#k' + keyCode;
 
+    if (event.shiftKey || event.ctrlKey || event.altKey || k == '#k16' || k == '#k17' || k == '#k18') {
+        if (event.location === KeyboardEvent.DOM_KEY_LOCATION_LEFT) {
+            k = k + 'l';
+        }
+        if (event.location === KeyboardEvent.DOM_KEY_LOCATION_RIGHT) {
+            k = k + 'r';
+        }
+    }
+    return k;
 }
 
 var keysDown = function (event) {
-    var keyCode = event.keyCode;
-    if (exKeys.indexOf(keyCode) != -1) {
-        event.preventDefault();
-    }
-    var k = '#k' + keyCode;
-
-    if (event.shiftKey || event.ctrlKey || event.altKey) {
-        if (event.location === KeyboardEvent.DOM_KEY_LOCATION_LEFT) {
-            k = k + 'l';
-        }
-        if (event.location === KeyboardEvent.DOM_KEY_LOCATION_RIGHT) {
-            k = k + 'r';
-        }
-    }
-    $(k).addClass("kd");
+    var key = processKeyClass(event);
+    $(key).addClass("kd");
 };
 
 var keysUp = function (event) {
-    var keyCode = event.keyCode;
-    var k = '#k' + keyCode;
-    if (exKeys.indexOf(keyCode) != -1) {
-        event.preventDefault();
-    }
-
-    if (k == '#k16' || k == '#k17' || k == '#k18') {
-        if (event.location === KeyboardEvent.DOM_KEY_LOCATION_LEFT) {
-            k = k + 'l';
-        }
-        if (event.location === KeyboardEvent.DOM_KEY_LOCATION_RIGHT) {
-            k = k + 'r';
-        }
-    }
-    $(k).removeClass("kd");
+    var key = processKeyClass(event);
+    $(key).removeClass("kd");
 }
 
 document.addEventListener('keydown', keysDown);
