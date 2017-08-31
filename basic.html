@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>在线英文打字练习_提高打字速度_英文打字_打字指法_盲打训练_指法练习_英文打字指法_英文打字指法训练_打字指法练习</title>
+    <meta name="keywords" content="在线英文打字练习,提高打字速度,英文打字,打字指法,盲打训练,指法练习,英文打字指法,英文打字指法训练,打字指法练习">
+    <meta name="description" content="在线英文打字练习,提高英文打字速度,掌握盲打技巧,训练打字准确率,提高速度,掌握打字指法。">
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/uikit.css"/>
+    <link rel="stylesheet" href="css/theme.css"/>
+    <style>
+        .cursor.blink {
+            animation: blink 1s infinite steps(1, start);
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                background-color: #fff;
+                color: #999;
+            }
+            50% {
+                background-color: #000;
+                color: #999;
+            }
+        }
+
+        #input-div > span {
+            display: inline-block;
+            font-size: 2em;
+            font-family: Consolas;
+        }
+
+        .init {
+            color: #999;
+        }
+
+        .correct {
+            color: black;
+        }
+
+        .error {
+            color: #F40;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="http://www.forten.org" target="_blank" title="更多精彩请关注唯实讲堂">ForTen.org</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nb"
+                aria-controls="nb" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nb">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">首页 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">初级训练</a>
+                </li>
+                <!--<li class="nav-item dropdown">-->
+                <!--<a class="nav-link dropdown-toggle" href="http://www.forten.org" id="d01" data-toggle="dropdown"-->
+                <!--aria-haspopup="true" aria-expanded="false">打字训练</a>-->
+                <!--<div class="dropdown-menu" aria-labelledby="d01">-->
+                <!--<a class="dropdown-item" href="#">初级指法</a>-->
+                <!--<a class="dropdown-item" href="#">中级实践</a>-->
+                <!--<a class="dropdown-item" href="#">高级挑战</a>-->
+                <!--<a class="dropdown-item" href="#">专业方向</a>-->
+                <!--</div>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="uk-padding-large uk-background-top-left uk-background-fixed uk-background-cover"
+     style="background-image: url(./imgs/bg002.jpg);">
+    <div class="container">
+        <p class="display-4 text-light text-center">直视屏幕，禁止偷窥键盘！</p>
+        <p class="display-4 text-light text-center">直视屏幕，禁止偷窥键盘！</p>
+        <p class="display-4 text-light text-center">直视屏幕，禁止偷窥键盘！</p>
+    </div>
+</div>
+<div id="main" class="uk-section container">
+    <div>
+        <button class="btn btn-link" @click="loadArticle('fingure1.json');">食指</button>
+        <button class="btn btn-link" @click="loadArticle('fingure2.json');">中指</button>
+        <button class="btn btn-link" @click="loadArticle('fingure3.json');">无名指</button>
+        <button class="btn btn-link" @click="loadArticle('fingure4.json');">小指</button>
+    </div>
+    <div>速度：{{speed}} 字/分钟 错误：{{errorTimes}} 次</div>
+    <div id="input-div" v-html="article"></div>
+</div>
+<a href="http://www.forten.org" target="_blank">
+    <div class="navbar navbar-nav navbar-dark bg-dark uk-text-center text-light"
+         title="在线英文打字练习,提高打字速度,英文打字,打字指法,盲打训练,指法练习,英文打字指法,英文打字指法训练,打字指法练习">
+        <div class="uk-grid uk-padding">
+            <figure class="uk-width-1-2">
+                <img src="imgs/forten.png" alt="http://www.ForTen.org"/>
+                <figcaption>&copy; ForTen.org</figcaption>
+            </figure>
+            <figure class="uk-width-1-2">
+                <img src="imgs/wx.png" alt="唯实讲堂微信订阅号"/>
+                <figcaption>微信订阅号</figcaption>
+            </figure>
+        </div>
+    </div>
+</a>
+<script src="js/popper.min.js"></script>
+<script src="js/jquery-3.2.1.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/axios.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/uikit.js"></script>
+<script src="js/uikit-icons.js"></script>
+<script src="js/basic.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#main',
+        data: {
+            started: false,
+            speed: 0,
+            types: 0,
+            errorTimes: 0,
+            begin: '',
+            article: '',
+            letterArray: [],
+            spanArray: []
+        },
+        methods: {
+            loadArticle: function (name) {
+                axios({
+                    url: 'article/' + name
+                }).then((res) => {
+                    this.started = false;
+                    this.speed = 0;
+                    this.types = 0;
+                    this.errorTimes = 0;
+                    this.article = res.data.article;
+                    this.letterArray = this.article.split('');
+                    this.spanArray = $.map(this.letterArray, function (value) {
+                        if (value == ' ') {
+                            return '<span class="init">&nbsp;</span>';
+                        } else {
+                            return '<span class="init">' + value + '</span>';
+                        }
+                    });
+                    this.spanArray[0] = this.spanArray[0].replace('init','init cursor blink');
+                    this.article = this.spanArray.join('');
+                });
+            }
+        }
+    });
+
+    var exKeyCode = [8, 9, 12, 13, 16, 17, 18, 20, 27, 33, 34, 35, 36, 37, 38, 39, 40, 45, 46, 144, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123]
+    var typeLetter = function (event) {
+        if(!vm.started){
+            vm.started = true;
+            vm.begin = new Date().getTime();
+        }
+        var currSpan = $('.cursor.blink');
+        var nextSpan = currSpan.next('span').first();
+        var source = currSpan.html();
+        var type = event.key;
+        if(event.keyCode==32){
+            type = '&nbsp;';
+        }
+        if(event.keyCode==190&&event.shiftKey){
+            type = '&gt;';
+        }
+        if(event.keyCode==188&&event.shiftKey){
+            type = '&lt;';
+        }
+
+        if (source == type) {
+            currSpan.removeClass('cursor').removeClass('blink').removeClass('init').removeClass('error').addClass('correct');
+            nextSpan.addClass('cursor').addClass('blink');
+            ++vm.types;
+            var useTime = new Date().getTime() - vm.begin;
+            if(vm.types>3)
+            vm.speed = Math.ceil((vm.types * 60) / (useTime / 1000));
+        } else {
+            if (exKeyCode.indexOf(event.keyCode) == -1) {
+                currSpan.removeClass('correct').addClass('error');
+                ++vm.errorTimes;
+            }
+        }
+    };
+
+    $(function () {
+        $('html').on('keydown', typeLetter);
+    });
+</script>
+</body>
+</html>
