@@ -134,6 +134,7 @@
         },
         methods: {
             loadArticle: function (name) {
+                this.article = '';
                 axios({
                     url: 'article/' + name
                 }).then((res) => {
@@ -141,8 +142,7 @@
                     this.speed = 0;
                     this.types = 0;
                     this.errorTimes = 0;
-                    this.article = res.data.article;
-                    this.letterArray = this.article.split('');
+                    this.letterArray = res.data.article.split('');
                     this.spanArray = $.map(this.letterArray, function (value) {
                         if (value == ' ') {
                             return '<span class="init">&nbsp;</span>';
@@ -160,7 +160,11 @@
     var exKeyCode = [8, 9, 12, 13, 16, 17, 18, 20, 27, 33, 34, 35, 36, 37, 38, 39, 40, 45, 46, 144, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123]
     var typeLetter = function (event) {
         if(vm.types==vm.spanArray.length-1){
-            $('html').off('keydown', typeLetter);
+            $('#input-div>span').last().removeClass('cursor').removeClass('blink');
+            $('#input-div>span').removeClass('correct').addClass('init');
+            $('#input-div>span').first().addClass('cursor').addClass('blink');
+            vm.types = 0;
+            vm.begin = new Date().getTime();
         }
         if(!vm.started){
             vm.started = true;
