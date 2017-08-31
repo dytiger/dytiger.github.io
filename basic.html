@@ -84,11 +84,11 @@
     </div>
 </div>
 <div id="main" class="uk-section container">
-    <div>
-        <button class="btn btn-link" @click="loadArticle('fingure1.json');">食指</button>
-        <button class="btn btn-link" @click="loadArticle('fingure2.json');">中指</button>
-        <button class="btn btn-link" @click="loadArticle('fingure3.json');">无名指</button>
-        <button class="btn btn-link" @click="loadArticle('fingure4.json');">小指</button>
+    <div class="btn-group">
+        <button class="btn btn-primary" @click="loadArticle('fingure1.json');" autofocus>食指</button>
+        <button class="btn btn-primary" @click="loadArticle('fingure2.json');">中指</button>
+        <button class="btn btn-primary" @click="loadArticle('fingure3.json');">无名指</button>
+        <button class="btn btn-primary" @click="loadArticle('fingure4.json');">小指</button>
     </div>
     <div>速度：{{speed}} 字/分钟 错误：{{errorTimes}} 次</div>
     <div id="input-div" v-html="article"></div>
@@ -159,13 +159,6 @@
 
     var exKeyCode = [8, 9, 12, 13, 16, 17, 18, 20, 27, 33, 34, 35, 36, 37, 38, 39, 40, 45, 46, 144, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123]
     var typeLetter = function (event) {
-        if(vm.types==vm.spanArray.length-1){
-            $('#input-div>span').last().removeClass('cursor').removeClass('blink');
-            $('#input-div>span').removeClass('correct').addClass('init');
-            $('#input-div>span').first().addClass('cursor').addClass('blink');
-            vm.types = 0;
-            vm.begin = new Date().getTime();
-        }
         if(!vm.started){
             vm.started = true;
             vm.begin = new Date().getTime();
@@ -196,6 +189,13 @@
                 currSpan.removeClass('correct').addClass('error');
                 ++vm.errorTimes;
             }
+        }
+        if(vm.types==vm.spanArray.length){
+            $('#input-div>span').last().removeClass('cursor').removeClass('blink');
+            $('#input-div>span').removeClass('correct').addClass('init');
+            $('#input-div>span').first().addClass('cursor').addClass('blink');
+            vm.types = 0;
+            vm.begin = new Date().getTime();
         }
     };
 
