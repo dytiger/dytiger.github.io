@@ -129,6 +129,9 @@
             letterArray: [],
             spanArray: []
         },
+        created:function(){
+            this.loadArticle('fingure1.json');
+        },
         methods: {
             loadArticle: function (name) {
                 axios({
