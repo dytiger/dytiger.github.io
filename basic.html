@@ -25,6 +25,13 @@
             }
         }
 
+        #input-div {
+            border: 1px solid #999;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px 1px #eee inset,
+            -2px -2px 5px 1px #eee inset;
+        }
+
         #input-div > span {
             display: inline-block;
             font-size: 2em;
@@ -39,8 +46,9 @@
             color: black;
         }
 
-        .error {
-            color: #F40;
+        .errors {
+            box-shadow: 2px 2px 5px 1px #f00 inset,
+            -2px -2px 5px 1px #f00 inset;
         }
     </style>
 </head>
@@ -84,19 +92,21 @@
     </div>
 </div>
 <div id="main" class="uk-section container">
-    <div class="btn-group">
-        <button class="btn btn-primary" @click="loadArticle('fingure1.json');" autofocus>食指</button>
-        <button class="btn btn-primary" @click="loadArticle('fingure2.json');">中指</button>
-        <button class="btn btn-primary" @click="loadArticle('fingure3.json');">无名指</button>
-        <button class="btn btn-primary" @click="loadArticle('fingure4.json');">小指</button>
+    <div class="uk-container">
+        <div class="h4 uk-width-2-3 uk-align-right">第一次敲击键盘时开始计算打字速度 {{speed}} 字/分钟 错误：{{errorTimes}} 次</div>
+        <div class="btn-group uk-width-1-4">
+            <button class="btn btn-primary" @click="loadArticle('fingure1.json');" autofocus>食指</button>
+            <button class="btn btn-primary" @click="loadArticle('fingure2.json');">中指</button>
+            <button class="btn btn-primary" @click="loadArticle('fingure3.json');">无名指</button>
+            <button class="btn btn-primary" @click="loadArticle('fingure4.json');">小指</button>
+        </div>
     </div>
-    <div>速度：{{speed}} 字/分钟 错误：{{errorTimes}} 次</div>
-    <div id="input-div" v-html="article"></div>
+    <div id="input-div" class="uk-margin uk-padding" v-html="article"></div>
 </div>
 <a href="http://www.forten.org" target="_blank">
     <div class="navbar navbar-nav navbar-dark bg-dark uk-text-center text-light"
          title="在线英文打字练习,提高打字速度,英文打字,打字指法,盲打训练,指法练习,英文打字指法,英文打字指法训练,打字指法练习">
-        <div class="uk-grid uk-padding">
+        <div class="uk-grid uk-padding-large">
             <figure class="uk-width-1-2">
                 <img src="imgs/forten.png" alt="http://www.ForTen.org"/>
                 <figcaption>&copy; ForTen.org</figcaption>
@@ -129,7 +139,7 @@
             letterArray: [],
             spanArray: []
         },
-        created:function(){
+        created: function () {
             this.loadArticle('fingure1.json');
         },
         methods: {
@@ -150,7 +160,7 @@
                             return '<span class="init">' + value + '</span>';
                         }
                     });
-                    this.spanArray[0] = this.spanArray[0].replace('init','init cursor blink');
+                    this.spanArray[0] = this.spanArray[0].replace('init', 'init cursor blink');
                     this.article = this.spanArray.join('');
                 });
             }
@@ -159,7 +169,7 @@
 
     var exKeyCode = [8, 9, 12, 13, 16, 17, 18, 20, 27, 33, 34, 35, 36, 37, 38, 39, 40, 45, 46, 144, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123]
     var typeLetter = function (event) {
-        if(!vm.started){
+        if (!vm.started) {
             vm.started = true;
             vm.begin = new Date().getTime();
         }
@@ -167,13 +177,13 @@
         var nextSpan = currSpan.next('span').first();
         var source = currSpan.html();
         var type = event.key;
-        if(event.keyCode==32){
+        if (event.keyCode == 32) {
             type = '&nbsp;';
         }
-        if(event.keyCode==190&&event.shiftKey){
+        if (event.keyCode == 190 && event.shiftKey) {
             type = '&gt;';
         }
-        if(event.keyCode==188&&event.shiftKey){
+        if (event.keyCode == 188 && event.shiftKey) {
             type = '&lt;';
         }
 
@@ -182,15 +192,14 @@
             nextSpan.addClass('cursor').addClass('blink');
             ++vm.types;
             var useTime = new Date().getTime() - vm.begin;
-            if(vm.types>3)
-            vm.speed = Math.ceil((vm.types * 60) / (useTime / 1000));
+            if (vm.types > 3)
+                vm.speed = Math.ceil((vm.types * 60) / (useTime / 1000));
         } else {
             if (exKeyCode.indexOf(event.keyCode) == -1) {
-                currSpan.removeClass('correct').addClass('error');
                 ++vm.errorTimes;
             }
         }
-        if(vm.types==vm.spanArray.length){
+        if (vm.types == vm.spanArray.length) {
             $('#input-div>span').last().removeClass('cursor').removeClass('blink');
             $('#input-div>span').removeClass('correct').addClass('init');
             $('#input-div>span').first().addClass('cursor').addClass('blink');
