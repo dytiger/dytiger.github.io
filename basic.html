@@ -95,11 +95,48 @@
     <div class="uk-container">
         <div class="h4 uk-width-2-3 uk-align-right">第一次敲击开始计算打字速度 {{speed}} 字/分钟 错误：{{errorTimes}} 次</div>
         <div class="btn-group uk-width-1-4">
-            <button class="btn btn-primary" @click="loadArticle('fingure1.json');" autofocus>食指</button>
-            <button class="btn btn-primary" @click="loadArticle('fingure2.json');">中指</button>
-            <button class="btn btn-primary" @click="loadArticle('fingure3.json');">无名指</button>
-            <button class="btn btn-primary" @click="loadArticle('fingure4.json');">小指</button>
+            <button class="btn btn-primary">食指</button>
+            <div uk-dropdown="pos: bottom-justify">
+                <ul class="uk-nav uk-dropdown-nav">
+                    <li><a href="#" @click="loadArticle('fingure11.json');">F & J</a></li>
+                    <li><a href="#" @click="loadArticle('fingure12.json');">G & H</a></li>
+                    <li><a href="#" @click="loadArticle('fingure13.json');">R & U</a></li>
+                    <li><a href="#" @click="loadArticle('fingure14.json');">T & Y</a></li>
+                    <li><a href="#" @click="loadArticle('fingure15.json');">B & N</a></li>
+                    <li><a href="#" @click="loadArticle('fingure16.json');">V & M</a></li>
+                    <li><a href="#" @click="loadArticle('fingure17.json');">4 & 7</a></li>
+                    <li><a href="#" @click="loadArticle('fingure18.json');">5 & 6</a></li>
+                </ul>
+            </div>
+            <button class="btn btn-primary">中指</button>
+            <div uk-dropdown="pos: bottom-justify">
+                <ul class="uk-nav uk-dropdown-nav">
+                    <li><a href="#" @click="loadArticle('fingure21.json');">D & K</a></li>
+                    <li><a href="#" @click="loadArticle('fingure22.json');">E & I</a></li>
+                    <li><a href="#" @click="loadArticle('fingure23.json');">C & ,</a></li>
+                    <li><a href="#" @click="loadArticle('fingure24.json');">3 & 8</a></li>
+                </ul>
+            </div>
+            <button class="btn btn-primary">无名指</button>
+            <div uk-dropdown="pos: bottom-justify">
+                <ul class="uk-nav uk-dropdown-nav">
+                    <li><a href="#" @click="loadArticle('fingure31.json');">S & L</a></li>
+                    <li><a href="#" @click="loadArticle('fingure32.json');">W & O</a></li>
+                    <li><a href="#" @click="loadArticle('fingure33.json');">X & .</a></li>
+                    <li><a href="#" @click="loadArticle('fingure34.json');">2 & 9</a></li>
+                </ul>
+            </div>
+            <button class="btn btn-primary">小指</button>
+            <div uk-dropdown="pos: bottom-justify">
+                <ul class="uk-nav uk-dropdown-nav">
+                    <li><a href="#" @click="loadArticle('fingure41.json');">A & ;</a></li>
+                    <li><a href="#" @click="loadArticle('fingure42.json');">Q & P</a></li>
+                    <li><a href="#" @click="loadArticle('fingure43.json');">Z & /</a></li>
+                    <li><a href="#" @click="loadArticle('fingure44.json');">1 & 0</a></li>
+                </ul>
+            </div>
         </div>
+
     </div>
     <div id="input-div" class="uk-margin uk-padding" v-html="article"></div>
 </div>
@@ -140,7 +177,7 @@
             spanArray: []
         },
         created: function () {
-            this.loadArticle('fingure1.json');
+            this.loadArticle('fingure11.json');
         },
         methods: {
             loadArticle: function (name) {
