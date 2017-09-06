@@ -11,7 +11,7 @@ var vm = new Vue({
         spanArray: []
     },
     created: function () {
-        this.loadArticle('fingure11.json');
+        this.loadArticle('words31.json');
     },
     methods: {
         loadArticle: loadArticle
