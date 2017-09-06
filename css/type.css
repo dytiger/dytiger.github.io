@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.cursor.blink {
+    animation: blink 1s infinite steps(1, start);
+}
+
+@keyframes blink {
+    0%, 100% {
+        background-color: #fff;
+        color: #999;
+    }
+    50% {
+        background-color: #000;
+        color: #999;
+    }
+}
+
+#input-div {
+    border: 1px solid #999;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 1px #eee inset,
+    -2px -2px 5px 1px #eee inset;
+}
+
+#input-div > span {
+    display: inline-block;
+    font-size: 2em;
+    font-family: Consolas;
+}
+
+.init {
+    color: #999;
+}
+
+.correct {
+    color: black;
+}
+
+.errors {
+    box-shadow: 2px 2px 5px 1px #f00 inset,
+    -2px -2px 5px 1px #f00 inset;
+}
