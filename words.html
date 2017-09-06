@@ -67,11 +67,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="index.html">首页 <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">指法训练</a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="words.html">单词训练</a>
+                    <a class="nav-link" href="basic.html">指法训练</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">单词训练</a>
                 </li>
                 <!--<li class="nav-item dropdown">-->
                 <!--<a class="nav-link dropdown-toggle" href="http://www.forten.org" id="d01" data-toggle="dropdown"-->
@@ -90,53 +90,34 @@
 <div class="uk-padding-large uk-background-top-left uk-background-fixed uk-background-cover"
      style="background-image: url(./imgs/bg002.jpg);">
     <div class="container">
-        <p class="display-4 text-light text-center">直视屏幕，禁止偷窥键盘！</p>
-        <p class="display-4 text-light text-center">直视屏幕，禁止偷窥键盘！</p>
-        <p class="display-4 text-light text-center">直视屏幕，禁止偷窥键盘！</p>
+        <p class="display-4 text-light">训练要点即<span class="display-1">坚持！</span></p>
+        <p class="display-4 text-light">建议<span class="display-1">每天训练</span>30到45分钟！</p>
     </div>
 </div>
 <div id="main" class="uk-section container">
     <div class="uk-container">
         <div class="h4 uk-width-2-3 uk-align-right">第一次敲击开始计算打字速度 {{speed}} 字/分钟 错误：{{errorTimes}} 次</div>
         <div class="btn-group uk-width-1-4">
-            <button class="btn btn-primary">食指</button>
+            <button class="btn btn-primary">三字母单词</button>
             <div uk-dropdown="pos: bottom-justify">
                 <ul class="uk-nav uk-dropdown-nav">
-                    <li><a href="#" @click="loadArticle('fingure11.json');">F & J</a></li>
-                    <li><a href="#" @click="loadArticle('fingure12.json');">G & H</a></li>
-                    <li><a href="#" @click="loadArticle('fingure13.json');">R & U</a></li>
-                    <li><a href="#" @click="loadArticle('fingure14.json');">T & Y</a></li>
-                    <li><a href="#" @click="loadArticle('fingure15.json');">B & N</a></li>
-                    <li><a href="#" @click="loadArticle('fingure16.json');">V & M</a></li>
-                    <li><a href="#" @click="loadArticle('fingure17.json');">4 & 7</a></li>
-                    <li><a href="#" @click="loadArticle('fingure18.json');">5 & 6</a></li>
+                    <li><a href="#" @click="loadArticle('words31.json');">第一部分</a></li>
+                    <li><a href="#" @click="loadArticle('words32.json');">第二部分</a></li>
+                    <li><a href="#" @click="loadArticle('words33.json');">第三部分</a></li>
+                    <li><a href="#" @click="loadArticle('words34.json');">第四部分</a></li>
                 </ul>
             </div>
-            <button class="btn btn-primary">中指</button>
+            <button class="btn btn-primary">四字母单词</button>
             <div uk-dropdown="pos: bottom-justify">
                 <ul class="uk-nav uk-dropdown-nav">
-                    <li><a href="#" @click="loadArticle('fingure21.json');">D & K</a></li>
-                    <li><a href="#" @click="loadArticle('fingure22.json');">E & I</a></li>
-                    <li><a href="#" @click="loadArticle('fingure23.json');">C & ,</a></li>
-                    <li><a href="#" @click="loadArticle('fingure24.json');">3 & 8</a></li>
-                </ul>
-            </div>
-            <button class="btn btn-primary">无名指</button>
-            <div uk-dropdown="pos: bottom-justify">
-                <ul class="uk-nav uk-dropdown-nav">
-                    <li><a href="#" @click="loadArticle('fingure31.json');">S & L</a></li>
-                    <li><a href="#" @click="loadArticle('fingure32.json');">W & O</a></li>
-                    <li><a href="#" @click="loadArticle('fingure33.json');">X & .</a></li>
-                    <li><a href="#" @click="loadArticle('fingure34.json');">2 & 9</a></li>
-                </ul>
-            </div>
-            <button class="btn btn-primary">小指</button>
-            <div uk-dropdown="pos: bottom-justify">
-                <ul class="uk-nav uk-dropdown-nav">
-                    <li><a href="#" @click="loadArticle('fingure41.json');">A & ;</a></li>
-                    <li><a href="#" @click="loadArticle('fingure42.json');">Q & P</a></li>
-                    <li><a href="#" @click="loadArticle('fingure43.json');">Z & /</a></li>
-                    <li><a href="#" @click="loadArticle('fingure44.json');">1 & 0</a></li>
+                    <li><a href="#" @click="loadArticle('words41.json');">第一部分</a></li>
+                    <li><a href="#" @click="loadArticle('words42.json');">第二部分</a></li>
+                    <li><a href="#" @click="loadArticle('words43.json');">第三部分</a></li>
+                    <li><a href="#" @click="loadArticle('words44.json');">第四部分</a></li>
+                    <li><a href="#" @click="loadArticle('words45.json');">第五部分</a></li>
+                    <li><a href="#" @click="loadArticle('words46.json');">第六部分</a></li>
+                    <li><a href="#" @click="loadArticle('words47.json');">第七部分</a></li>
+                    <li><a href="#" @click="loadArticle('words48.json');">第八部分</a></li>
                 </ul>
             </div>
         </div>
@@ -180,7 +161,7 @@
             spanArray: []
         },
         created: function () {
-            this.loadArticle('fingure11.json');
+            this.loadArticle('words31.json');
         },
         methods: {
             loadArticle: function (name) {
