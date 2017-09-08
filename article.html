@@ -29,11 +29,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="basic.html">指法训练</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">单词训练</a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="article.html">文章训练</a>
+                    <a class="nav-link" href="words.html">单词训练</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">文章训练</a>
                 </li>
             </ul>
         </div>
@@ -42,49 +42,53 @@
 <div class="uk-padding-large uk-background-top-left uk-background-fixed uk-background-cover"
      style="background-image: url(./imgs/bg002.jpg);">
     <div class="container">
-        <p class="display-4 text-light">训练要点即<span class="display-1">循序渐进</span>和<span class="display-1">坚持！</span></p>
-        <p class="display-4 text-light">建议<span class="display-1">每天训练</span>30到45分钟！</p>
-        <p class="display-4 text-light">每部分速度不达到<span class="display-1">150字/分钟</span>不要进入下一个部分！</p>
+        <p class="display-4 text-light text-center">直视屏幕，禁止偷窥键盘！</p>
+        <p class="display-4 text-light text-center">直视屏幕，禁止偷窥键盘！</p>
+        <p class="display-4 text-light text-center">直视屏幕，禁止偷窥键盘！</p>
     </div>
 </div>
 <div id="main" class="uk-section container">
     <div class="uk-container">
         <div class="h4 uk-width-2-3 uk-align-right">第一次敲击开始计算打字速度 {{speed}} 字/分钟 错误：{{errorTimes}} 次</div>
         <div class="btn-group uk-width-1-4">
-            <button class="btn btn-primary">三字母单词</button>
+            <button class="btn btn-primary">第一部分</button>
             <div uk-dropdown="pos: bottom-justify">
                 <ul class="uk-nav uk-dropdown-nav">
-                    <li><a href="#" @click="loadArticle('words31.json');">第一部分</a></li>
-                    <li><a href="#" @click="loadArticle('words32.json');">第二部分</a></li>
-                    <li><a href="#" @click="loadArticle('words33.json');">第三部分</a></li>
-                    <li><a href="#" @click="loadArticle('words34.json');">第四部分</a></li>
+                    <li><a href="#" @click="loadArticle('article001.json');">练习1</a></li>
+                    <li><a href="#" @click="loadArticle('article002.json');">练习2</a></li>
+                    <li><a href="#" @click="loadArticle('article003.json');">练习3</a></li>
+                    <li><a href="#" @click="loadArticle('article004.json');">练习4</a></li>
+                    <li><a href="#" @click="loadArticle('article005.json');">练习5</a></li>
+                    <li><a href="#" @click="loadArticle('article006.json');">练习6</a></li>
+                    <li><a href="#" @click="loadArticle('article007.json');">练习7</a></li>
+                    <li><a href="#" @click="loadArticle('article008.json');">练习8</a></li>
+                    <li><a href="#" @click="loadArticle('article009.json');">练习9</a></li>
+                    <li><a href="#" @click="loadArticle('article010.json');">练习10</a></li>
                 </ul>
             </div>
-            <button class="btn btn-primary">四字母单词</button>
+            <button class="btn btn-primary">第二部分</button>
             <div uk-dropdown="pos: bottom-justify">
                 <ul class="uk-nav uk-dropdown-nav">
-                    <li><a href="#" @click="loadArticle('words41.json');">第一部分</a></li>
-                    <li><a href="#" @click="loadArticle('words42.json');">第二部分</a></li>
-                    <li><a href="#" @click="loadArticle('words43.json');">第三部分</a></li>
-                    <li><a href="#" @click="loadArticle('words44.json');">第四部分</a></li>
-                    <li><a href="#" @click="loadArticle('words45.json');">第五部分</a></li>
-                    <li><a href="#" @click="loadArticle('words46.json');">第六部分</a></li>
-                    <li><a href="#" @click="loadArticle('words47.json');">第七部分</a></li>
-                    <li><a href="#" @click="loadArticle('words48.json');">第八部分</a></li>
+                    <li><a href="#" @click="loadArticle('article011.json');">练习11</a></li>
+                    <li><a href="#" @click="loadArticle('article012.json');">练习12</a></li>
+                    <li><a href="#" @click="loadArticle('article013.json');">练习13</a></li>
+                    <li><a href="#" @click="loadArticle('article014.json');">练习14</a></li>
+                    <li><a href="#" @click="loadArticle('article015.json');">练习15</a></li>
+                    <li><a href="#" @click="loadArticle('article016.json');">练习16</a></li>
+                    <li><a href="#" @click="loadArticle('article017.json');">练习17</a></li>
+                    <li><a href="#" @click="loadArticle('article018.json');">练习18</a></li>
+                    <li><a href="#" @click="loadArticle('article019.json');">练习19</a></li>
+                    <li><a href="#" @click="loadArticle('article020.json');">练习20</a></li>
                 </ul>
             </div>
-            <button class="btn btn-primary">五字母单词</button>
+            <button class="btn btn-primary">第三部分</button>
             <div uk-dropdown="pos: bottom-justify">
                 <ul class="uk-nav uk-dropdown-nav">
-                    <li><a href="#" @click="loadArticle('words51.json');">第一部分</a></li>
-                    <li><a href="#" @click="loadArticle('words52.json');">第二部分</a></li>
-                    <li><a href="#" @click="loadArticle('words53.json');">第三部分</a></li>
-                    <li><a href="#" @click="loadArticle('words54.json');">第四部分</a></li>
-                    <li><a href="#" @click="loadArticle('words55.json');">第五部分</a></li>
-                    <li><a href="#" @click="loadArticle('words56.json');">第六部分</a></li>
-                    <li><a href="#" @click="loadArticle('words57.json');">第七部分</a></li>
-                    <li><a href="#" @click="loadArticle('words58.json');">第八部分</a></li>
-                    <li><a href="#" @click="loadArticle('words59.json');">第九部分</a></li>
+                    <li><a href="#" @click="loadArticle('article021.json');">练习21</a></li>
+                    <li><a href="#" @click="loadArticle('article022.json');">练习22</a></li>
+                    <li><a href="#" @click="loadArticle('article023.json');">练习23</a></li>
+                    <li><a href="#" @click="loadArticle('article024.json');">练习24</a></li>
+                    <li><a href="#" @click="loadArticle('article025.json');">练习25</a></li>
                 </ul>
             </div>
         </div>
@@ -114,6 +118,6 @@
 <script src="js/uikit.js"></script>
 <script src="js/uikit-icons.js"></script>
 <script src="js/basic.js"></script>
-<script src="js/words.js"></script>
+<script src="js/article.js"></script>
 </body>
 </html>
